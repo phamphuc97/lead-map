@@ -7,13 +7,13 @@ This project requires Node.js version 14 or higher. If you haven't installed Nod
 1. First, clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/your-username/lead-in-water.git
+    git clone https://github.com/phamphuc97/lead-map.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd lead-in-water
+    cd lead-map
     ```
 
 3. Install dependencies using npm:
