@@ -1,10 +1,14 @@
 import './style.css';
-import {Map, View} from 'ol';
+import {Map, View, Feature} from 'ol';
 import TileLayer from 'ol/layer/Tile';
+import {Point} from 'ol/geom';
+import {Vector as v1} from 'ol/layer';
+import {Vector as v2} from 'ol/source';
+import {Icon, Style} from 'ol/style';
 import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
 
-export { searchAddress, highlightBoundary };
+export { searchAddress, placeMarker };
 
 const map = new Map({
   target: 'map',
@@ -14,12 +18,12 @@ const map = new Map({
     })
   ],
   view: new View({
-    center: [0, 0],
-    zoom: 5
+    center: [10, 20],
+    zoom: 3
   })
 });
 
-function highlightBoundary(coordinates) {
+function placeMarker(coordinates) {
   // Remove existing marker layers if any
   map.getLayers().forEach(layer => {
     if (layer.get('name') === 'markerLayer') {
@@ -28,28 +32,28 @@ function highlightBoundary(coordinates) {
   });
 
   // Create a marker feature at the searched location
-  var marker = new ol.Feature({
-    geometry: new ol.geom.Point(coordinates)
+  var marker = new Feature({
+    geometry: new Point(coordinates)
   });
 
   // Style the marker
-  var markerStyle = new ol.style.Style({
-    image: new ol.style.Icon({
-      src: '3d-pin.jpeg', // Path to the marker icon
+  var markerStyle = new Style({
+    image: new Icon({
+      src: 'https://openlayers.org/en/v3.20.1/examples/data/icon.png', // Path to the marker icon
       anchor: [0.5, 1], // Position the anchor point of the icon
     }),
   });
   marker.setStyle(markerStyle);
 
   // Create a vector layer to hold the marker
-  var markerLayer = new ol.layer.Vector({
+  var markerLayer = new v1({
     name: 'markerLayer', // Add a name to identify the layer
-    source: new ol.source.Vector({
+    source: new v2({
       features: [marker],
     }),
   });
 
-  // Add the vector layer (marker) to the map
+  // Add the marker to the map
   map.addLayer(markerLayer);
 }
 
@@ -68,8 +72,9 @@ function searchAddress() {
           map.getView().setCenter(coordinates);
           map.getView().setZoom(12);
 
-          // Highlight the boundary
-          highlightBoundary(coordinates);
+          // Mark the position of the coordinates on the map
+          placeMarker(coordinates);
+
         } else {
           alert('Address not found!');
         }
