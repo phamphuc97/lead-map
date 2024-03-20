@@ -1,13 +1,34 @@
 # Lead in Water Service Lines Map
+Welcome to the Lead in Water Service Lines Map! This project is currently under construction and aims to provide users with information about lead in water service lines. While the current version allows users to search for addresses and view the map, we're continuously working on adding more features. Stay tuned for updates as we enhance the functionality to provide even more detailed information about specific addresses.
 
-A web application that allows users to interact with a map to find information about houses and determine if they have lead in their water service lines.
+This project requires Node.js version 14 or higher. If you haven't installed Node.js yet, you can download it from [the official Node.js website](https://nodejs.org/).
+### Getting Started
 
-Node 14+ is required to run this project. Run the following command to install Node 14+ and its dependencies:
+1. First, clone this repository to your local machine:
 
+    ```bash
+    git clone https://github.com/your-username/lead-in-water.git
+    ```
+
+2. Navigate to the project directory:
+
+    ```bash
+    cd lead-in-water
+    ```
+
+3. Install dependencies using npm:
+
+    ```bash
     npm install
+    ```
 
-To get started, navigate to the directory where this file is located at and run the following command in the terminal:
+4. Start the development server:
 
+    ```bash
     npm start
+    ```
 
-The terminal will display a development server (usually http://localhost:5173), copy that and paste it into your preferred browser.
+5. Your terminal will display the address of the development server (usually http://localhost:5173). Copy this address and paste it into your preferred web browser.
+
+Now you should be able to view the Lead in Water Service Lines Map in your browser.
+

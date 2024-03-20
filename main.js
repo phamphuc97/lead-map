@@ -2,8 +2,8 @@ import './style.css';
 import {Map, View, Feature} from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import {Point} from 'ol/geom';
-import {Vector as v1} from 'ol/layer';
-import {Vector as v2} from 'ol/source';
+import {Vector as vectorLayer} from 'ol/layer';
+import {Vector as vectorSource} from 'ol/source';
 import {Icon, Style} from 'ol/style';
 import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
@@ -46,9 +46,9 @@ function placeMarker(coordinates) {
   marker.setStyle(markerStyle);
 
   // Create a vector layer to hold the marker
-  var markerLayer = new v1({
+  var markerLayer = new vectorLayer({
     name: 'markerLayer', // Add a name to identify the layer
-    source: new v2({
+    source: new vectorSource({
       features: [marker],
     }),
   });
